@@ -1,0 +1,22 @@
+Rubric turned in on time (5 points)
+
+Languages/Frameworks used (20 points)
+20 - Learned/Used Django frontend and backend
+0 - Used MySQL database
+
+Functionality (60 points)
+10 - Users can register, login, and logout using Django sessions
+10 - Users can upload images
+15 - Users can create categories and sort images by category
+10 - Users can view individual images enlarged and with a caption
+15 - Users by default can only view images they have uploaded after logging in
+10 - Database contains images uploaded
+
+Best Practices (5 points)
+3 Code is readable and well formatted
+2 All pages pass the html validator
+
+Creative Portion (10 points)
+
+
+TA Signed: Clay Mudter
