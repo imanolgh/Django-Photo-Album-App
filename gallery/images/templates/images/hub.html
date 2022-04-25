@@ -35,18 +35,17 @@
         <li class="nav-item">
           <a href="{% url 'upload' %}"class="nav-link">Upload</a>
         </li>
-        <li class="nav-item">
-            <a href="{% url 'album' %}"class="nav-link">My Albums</a>
-        </li>
-
+ 
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
+              My Albums
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Vacation</a>
-              <a class="dropdown-item" href="#">Cute Dogs</a>
+                {% for album in album_names %}
+                    <a class="dropdown-item" href="#">{{album.album_name}}</a>
+                {% endfor %}
             </div>
+
         </li>
 
         <!-- <li class="nav-item">
@@ -57,27 +56,18 @@
 <div class = "images_for_gallery">
     <div class="container-fluid my-4">
           <div class="col">
-              
               <div class ="row">
+                {% for image in image_for_gallery %}
                 <div class="col-md-2">
                     <div class="card">
-                    <img src="https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_500x500_$&$product=PartyCity/909620" class="img-block" alt="image">
+                    <img src="{{image.gallery_image.url}}" class="img-block" alt="image">
                         <div class="card-body">
-                        <p class="card-text">Balloon</p>
+                        <p class="card-text">{{image.caption}}</p>
                         </div>
-                        <a href = "{% url 'view' 5 %}"class ="btn btn-info btn-sm m-2">Enlarge</a>
+                        <a href = "{% url 'view' image.id %}"class ="btn btn-info btn-sm m-2">Enlarge</a>
                      </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="card">
-                    <img src="https://www.dog.com/ezine/hash_91-26-7B-C4-18-C2-3B-A4-13-32-C4-B8-44-3E-2C-88/images/Homepage/2022/20220105D/images/20220105D-feature4.jpg" class="img-block" alt="image">
-                        <div class="card-body">
-                        <p class="card-text">Balloon</p>
-                        </div>
-                        <a href = "{% url 'view' 5 %}"class ="btn btn-info btn-sm m-2">Enlarge</a>
-                     </div>
-                </div>
-
+                {% endfor %}
              </div>
         </div>
     </div>
