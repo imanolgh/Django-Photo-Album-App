@@ -41,8 +41,9 @@
               My Albums
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'hub' %}">View All</a>
                 {% for album in album_names %}
-                    <a class="dropdown-item" href="#">{{album.album_name}}</a>
+                    <a class="dropdown-item" href="{% url 'hub' %}?album={{album.album_name}}">{{album.album_name}}</a>
                 {% endfor %}
             </div>
 
