@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang = 'en'>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -11,6 +11,9 @@
         .css{
             font-size: large;
         }
+        .header{
+          text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -19,12 +22,13 @@
     {% if cur_type != "reg" %}
     <form method = 'POST'>
         <div>
+            <h1 class = "header">Register or Login to go to the Image Gallery</h1>
             <a href = "{% url 'register' %}">Register a New Account</a>
         </div>
         <br>
         <div class="form-group">
           <label for="exampleInputEmail1">Username</label>
-          <input type="user" name = "user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+          <input type="text" name = "user" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
           <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
         </div>
         <div class="form-group">
@@ -44,7 +48,6 @@
             {% csrf_token %}
         </form>
       {% endif %}
-
     </div>
 </body>
 </html>

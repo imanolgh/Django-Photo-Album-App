@@ -10,6 +10,7 @@ class albums(models.Model):
 
 
 class images(models.Model):
+    time = models.DateTimeField(auto_now_add=True)
     gallery_image = models.ImageField(blank = False, null = False)
     album = models.ForeignKey(albums,blank = True, null=True, on_delete=models.SET_NULL)
     caption = models.CharField(max_length = 50, blank = False,null = False)

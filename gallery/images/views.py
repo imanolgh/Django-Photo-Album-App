@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+import datetime
 from .models import images, albums
 
 
@@ -19,6 +20,11 @@ def hub(request):
 
     all_albums = {'image_for_gallery': image_for_gallery, 'album_names': album_names}
     return render(request, 'images/hub.html', all_albums)
+
+def deleteImage(request, primary):
+    img = images.objects.filter(id=primary)
+    img.delete()
+    return redirect('hub')
 
 def registerUsers(request):
     userForm = UserCreationForm()
@@ -62,6 +68,7 @@ def loginUsers(request):
 def upload_image(request):
     owner = request.user
     if request.method == 'POST':
+        time = datetime.datetime.now()
         img = request.FILES.get("img")
         formFields = request.POST
 
@@ -70,7 +77,7 @@ def upload_image(request):
         else:
             album = albums.objects.get(id = formFields['album'])
         
-        image = images.objects.create(album = album, caption = formFields["caption"], gallery_image = img)
+        image = images.objects.create(album = album, caption = formFields["caption"], gallery_image = img, time = time)
 
     album_names = albums.objects.filter(owner=owner) 
     return render(request, 'images/upload_image.html',  {'album_names': album_names})

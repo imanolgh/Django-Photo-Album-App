@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang = 'en'>
-<html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -19,12 +18,16 @@
         }
         .images_for_gallery{
             margin: 0px auto;
-
+        }
+        .card-text{
+            text-align: center;
+            font-size: small;
         }
     </style>
 </head>
 
 <body>
+    <!-- navbar adapted from bootstrap: https://getbootstrap.com/docs/4.0/components/navbar/ -->
     <nav class="nav justify-content-center">
         <li class="nav-item">
             {% if request.user.is_authenticated %}
@@ -38,7 +41,7 @@
           <a class="nav-link" href="{% url 'logout'%}">Logout</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'upload' %}"class="nav-link">Upload</a>
+          <a href="{% url 'upload' %}" class="nav-link">Upload</a>
         </li>
  
         <li class="nav-item dropdown">
@@ -54,11 +57,9 @@
 
         </li>
 
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li> -->
     </nav>
 
+<!-- conatiner format adapted from bootstrap:https://getbootstrap.com/docs/4.0/layout/overview/#containers  -->
 <div class = "images_for_gallery">
     <div class="container-fluid my-4">
           <div class="col">
@@ -70,7 +71,8 @@
                         <div class="card-body">
                         <p class="card-text">{{image.caption}}</p>
                         </div>
-                        <a href = "{% url 'view' image.id %}"class ="btn btn-info btn-sm m-2">Enlarge</a>
+                        <p class="card-text">Image added at: {{image.time}}</p>
+                        <a href = "{% url 'view' image.id %}" class ="btn btn-info btn-sm m-2">Enlarge</a>
                      </div>
                 </div>
                 {% endfor %}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang = 'en'>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -15,9 +15,9 @@
 </head>
 <body>
     <!-- Code Adapted from bootstrap: https://getbootstrap.com/docs/5.0/forms/select/ && https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
-    <a href = "{% url 'hub' %}"class ="btn btn-info btn-sm m-2">Back to Home</a>
+    <a href = "{% url 'hub' %}" class ="btn btn-info btn-sm m-2">Back to Home</a>
 
-    <form method = 'POST' enctype="multipart/form-data" action="">
+    <form method = 'POST' enctype="multipart/form-data">
         <div class="form-group m-4">
             <label for="FormControlFile">Upload an Image</label>
             <input type="file" class="form-control-file" name = "img" required>
